@@ -4,7 +4,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
 // collection -> Para crear o referenciar una tabla o coleccion de datos
 // getFirestore -> Conexion a firestore.
 // addDoc -> Para anadir un documento o dato a la talla correspondiente. 
-import { getFirestore, collection, addDoc, getDocs, onSnapshot} from "https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore.js";
+import { getFirestore, collection,
+         addDoc, getDocs,
+         onSnapshot,deleteDoc,
+         doc
+}from "https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -35,3 +40,6 @@ export const getTask = () => getDocs(collection(db,'task')) // Solo pide una vez
 
 //Pide los datos nuevos cada vez que haya. Se llama subcripcion
 export const onGetTaks = callback => onSnapshot(collection(db,'task'),callback) 
+
+// Eliminar Datos
+export const deleteTask = id => deleteDoc(doc(db,'task',id))
