@@ -7,7 +7,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase
 import { getFirestore, collection,
          addDoc, getDocs,
          onSnapshot,deleteDoc,
-         doc
+         doc, getDoc,
+         updateDoc
 }from "https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -43,3 +44,8 @@ export const onGetTaks = callback => onSnapshot(collection(db,'task'),callback)
 
 // Eliminar Datos
 export const deleteTask = id => deleteDoc(doc(db,'task',id))
+
+export const getOneTask = id => getDoc(doc(db,'task',id))
+
+// newFields = {title:"algo", description:"algo"}
+export const editTask = (id, newFields) => updateDoc(doc(db,'task',id), newFields)
